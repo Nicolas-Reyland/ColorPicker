@@ -47,7 +47,7 @@ Yet another Color Picker Library for Android. It is highly customizable and easy
 	```
 
 	```groovy
-	implementation 'com.github.Dhaval2404:ColorPicker:2.3'
+	implementation 'com.github.Nicolas-Reyland:ColorPicker:2.3'
 	```
 
 2. The **ColorPicker** configuration is created using the builder pattern.
