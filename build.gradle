@@ -5,27 +5,43 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-        jcenter()
+        // jcenter() can be removed unless absolutely necessary
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:4.2.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        // Remove deprecated plugins
     }
+}
+
+plugins {
+    id 'maven-publish'  // Apply the maven-publish plugin
 }
 
 allprojects {
     repositories {
         google()
         mavenCentral()
-        jcenter()
-        maven { url 'https://jitpack.io' }
+        maven { url 'https://jitpack.io' }  // JitPack repository
+        // jcenter() can be removed unless absolutely necessary
     }
+
     // Avoid Kotlin docs error
     tasks.withType(Javadoc) {
         enabled = false
     }
 }
 
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java  // Specify your component
+            // You may want to add further configurations such as artifactId and version
+        }
+    }
+}
+
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
