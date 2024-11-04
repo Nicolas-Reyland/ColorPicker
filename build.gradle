@@ -15,7 +15,19 @@ buildscript {
 }
 
 plugins {
+    id 'com.android.library'  // Add this line if it's a library module
     id 'maven-publish'  // Apply the maven-publish plugin
+    id 'kotlin-android'  // Add this line to enable Kotlin support
+}
+
+android {
+    compileSdkVersion 31  // Use the latest SDK version you want
+    defaultConfig {
+        minSdkVersion 21  // Set your minimum SDK version
+        targetSdkVersion 31  // Set your target SDK version
+        versionCode 1  // Increment this for each release
+        versionName "1.0"  // Your version name
+    }
 }
 
 allprojects {
@@ -36,7 +48,9 @@ publishing {
     publications {
         mavenJava(MavenPublication) {
             from components.java  // Specify your component
-            // You may want to add further configurations such as artifactId and version
+            groupId = 'com.github.Nicolas-Reyland'  // Specify your group ID
+            artifactId = 'color-picker-2'  // Specify your artifact ID
+            version = '2.3.1'  // Specify your version
         }
     }
 }
